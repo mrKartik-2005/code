@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Valentine</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 22px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    position: relative;
+}
+
+.profile {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ff2f92;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: #ff2f92;
+    margin: 5px 0 15px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 25px;
+}
+
+button {
+    padding: 12px 28px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#yes {
+    background: #ff2f92;
+    color: white;
+}
+
+#no {
+    background: #777;
+    color: white;
+    position: absolute;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="box">
+    <!-- CHANGE NAME HERE -->
+    <img src="Doll Wallpaper Beautiful Hd.jpg" class="profile">
+    <h2>My Beautiful Aanya 💖</h2>
+
+    <h1>Will you be my Valentine? 💕</h1>
+
+    <button id="yes">Yes 😍</button>
+    <button id="no">No 🙈</button>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const box = document.getElementById("box");
+
+let noScale = 1;
+let yesScale = 1;
+
+function moveNo() {
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 60);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    noScale -= 0.1;
+    yesScale += 0.1;
+
+    noBtn.style.transform = scale(${noScale});
+    yesBtn.style.transform = scale(${yesScale});
+}
+
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("click", moveNo);
+
+yesBtn.addEventListener("click", () => {
+    box.innerHTML = `
+        <h1>YAY ${"Aanya"} 🥰💘</h1>
+        <p>You just made me the happiest person ❤️</p>
+        <p>Happy Valentine’s Day 🌹</p>
+    `;
+    startHearts();
+});
+
+function startHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.bottom = "0px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+    }, 300);
+}
+</script>
+
+</body>
+</html>
